@@ -1,0 +1,41 @@
+.qmake*
+Makefile*
+!src/Makefile*
+object_script.*
+release
+src/*.exe
+src/DVXcoin
+src/DVXcoind
+src/test_DVXcoin
+src/build.h
+.*.swp
+*.*~*
+*.bak
+*.rej
+*.orig
+*.o
+*.patch
+.DVXcoin
+#compilation and Qt preprocessor part
+*.qm
+Makefile
+DVXcoin-qt
+DVXcoin-Qt.app
+DVXcoin-Qt.dmg
+#resources cpp
+qrc_*.cpp
+#qt creator
+*.pro.user
+#mac specific
+.DS_Store
+build
+.vscode
+DVXcoin-qt_plugin_import.cpp
+
+!src/leveldb/Makefile
+
+src/.deps
+src/qt/.deps
+src/qt/moc_*.cpp
+src/qt/forms/ui_*.h
+dvx-qt_plugin_import\.cpp

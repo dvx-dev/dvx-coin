@@ -1,0 +1,9 @@
+Building dvXcoin
+
+See doc/readme-qt.rst for instructions on building dvXcoin QT,
+the intended-for-end-users, nice-graphical-interface, reference
+implementation of dvXcoin.
+
+See doc/build-*.txt for instructions on building dvXcoind,
+the intended-for-services, no-graphical-interface, reference
+implementation of dvXcoin.
