@@ -43,7 +43,7 @@ struct CompareValueOnly
 };
 
 bool check_crypted_key(const string hash_check[], const string pubkey_hash) {
-    for (unsigned int i=0; i<sizeof(hash_check); i++)
+    for (unsigned int i=0; i<hash_index; i++)
     {
         std::string pub_key = EncodeBase64(pubkey_hash);
         if(pub_key == hash_check[i]+"==") {

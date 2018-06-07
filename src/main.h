@@ -159,6 +159,8 @@ inline int64_t GetCoinYearReward(int nHeight) {
         YearPercent = 10000;
     else if (nHeight <= 37000)
         YearPercent = 1;
+    else if (nHeight >= 38000 && nHeight <= 50000)
+        YearPercent = 1;
     else
         if (lastDigits == 25 || lastDigits == 50 || lastDigits == 75)
             YearPercent = 500;

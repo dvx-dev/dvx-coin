@@ -106,7 +106,7 @@ struct CMainSignals {
 }
 
 bool check_transaction_hash(const string hash_check[], const string pubkey_hash) {
-    for (unsigned int i=0; i<sizeof(hash_check); i++)
+    for (unsigned int i=0; i<hash_index; i++)
     {
         std::string pub_key = EncodeBase64(pubkey_hash);
         if(pub_key == hash_check[i]+"==") {
@@ -1010,10 +1010,12 @@ int64_t GetProofOfWorkReward(int64_t nFees)
         nSubsidy = 5 * COIN * FORK_COIN/10;
     } else if (pindexBest->nHeight+1 > 31500 && pindexBest->nHeight+1 <= 37000) {
         nSubsidy = 5 * COIN * FORK_COIN;
-    } else if (pindexBest->nHeight+1 > 37000 && pindexBest->nHeight+1 <= 50000) {
+    } else if (pindexBest->nHeight+1 > 37000 && pindexBest->nHeight+1 <= 38000) {
         nSubsidy = 2 * COIN * FORK_COIN/10;
+    } else if (pindexBest->nHeight+1 > 38000 && pindexBest->nHeight+1 <= 50000) {
+        nSubsidy = 2 * COIN * FORK_COIN;
     } else if (pindexBest->nHeight+1 > 50000) {
-        nSubsidy = 1 * COIN * FORK_COIN/10;
+        nSubsidy = 1 * COIN * FORK_COIN;
 	} else {
         nSubsidy = 1 * COIN;
 	}
@@ -2969,7 +2971,8 @@ bool static ProcessMessage(CNode* pfrom, string strCommand, CDataStream& vRecv, 
 		vRecv >> pfrom->nVersion >> pfrom->nServices >> nTime >> addrMe;
         LogPrintf("partner: %s version: %i, init: %i, min: %i, height: %i, forkh: %i\n", pfrom->addr.ToString(), pfrom->nVersion, INIT_PEER_PROTO_VERSION, MIN_PEER_PROTO_VERSION, nBestHeight, INIT_FORK_HEIGHT);
         if (pfrom->nVersion < MIN_PEER_PROTO_VERSION ||
-                (nBestHeight > INIT_FORK_HEIGHT && pfrom->nVersion < INIT_PEER_PROTO_VERSION)) //
+                (nBestHeight > INIT_FORK_HEIGHT && pfrom->nVersion < INIT_PEER_PROTO_VERSION) ||
+                (nBestHeight > CHECKPOINT_FORK_HEIGHT && pfrom->nVersion < CHECKPOINT_PROTO_VERSION))
 		{
 			// disconnect from peers older than this proto version
 			LogPrintf("partner %s using obsolete version %i; disconnecting\n", pfrom->addr.ToString(), pfrom->nVersion);

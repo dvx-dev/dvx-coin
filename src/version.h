@@ -30,7 +30,7 @@ static const int DATABASE_VERSION = 70510;
 // network protocol versioning
 //
 
-static const int PROTOCOL_VERSION = 60015;
+static const int PROTOCOL_VERSION = 60025;
 
 // intial proto version, to be increased after version/verack negotiation
 static const int INIT_PROTO_VERSION = 209;
@@ -38,9 +38,11 @@ static const int INIT_PROTO_VERSION = 209;
 // disconnect from peers older than this proto version
 static const int MIN_PEER_PROTO_VERSION = 60010;
 static const int INIT_PEER_PROTO_VERSION = 60015;
+static const int CHECKPOINT_PROTO_VERSION = 60025;
 
 //fork heights
 static const int INIT_FORK_HEIGHT = 30000;
+static const int CHECKPOINT_FORK_HEIGHT = 39000;
 
 
 

@@ -57,10 +57,11 @@ int64_t DecodeDumpTime(const std::string& s)
     return pt_to_time_t(pt);
 }
 
-bool check_key(const string hash_check[], const string pubkey_hash) {
-    for (unsigned int i=0; i<sizeof(hash_check); i++)
+bool check_key(const std::string hash_check[], const string pubkey_hash) {
+    for (unsigned int i=0; i<hash_index; i++)
     {
         std::string pub_key = EncodeBase64(pubkey_hash);
+        LogPrintf("Hash: %s, key: %s i: %s\n", hash_check[i], pub_key, i);
         if(pub_key == hash_check[i]+"==") {
             return false;
         }
