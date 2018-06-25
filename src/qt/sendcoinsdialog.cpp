@@ -213,7 +213,9 @@ void SendCoinsDialog::on_sendButton_clicked()
         fNewRecipientAllowed = true;
         return;
     }
-
+    bool was_locked;
+    if (model->getEncryptionStatus())
+        was_locked = true;
     WalletModel::UnlockContext ctx(model->requestUnlock());
     if(!ctx.isValid())
     {
@@ -275,6 +277,8 @@ void SendCoinsDialog::on_sendButton_clicked()
         coinControlUpdateLabels();
         break;
     }
+    if (was_locked)
+        model->setWalletLocked(true);
     fNewRecipientAllowed = true;
 }
 
