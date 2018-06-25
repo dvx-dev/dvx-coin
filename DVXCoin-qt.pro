@@ -1,5 +1,5 @@
 TEMPLATE = app
-VERSION = 1.0.4.0
+VERSION = 1.0.5.0
 TARGET = DVXcoin-$$VERSION-qt
 INCLUDEPATH += src src/json src/qt
 QT += network

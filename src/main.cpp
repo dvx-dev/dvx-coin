@@ -2972,7 +2972,8 @@ bool static ProcessMessage(CNode* pfrom, string strCommand, CDataStream& vRecv, 
         LogPrintf("partner: %s version: %i, init: %i, min: %i, height: %i, forkh: %i\n", pfrom->addr.ToString(), pfrom->nVersion, INIT_PEER_PROTO_VERSION, MIN_PEER_PROTO_VERSION, nBestHeight, INIT_FORK_HEIGHT);
         if (pfrom->nVersion < MIN_PEER_PROTO_VERSION ||
                 (nBestHeight > INIT_FORK_HEIGHT && pfrom->nVersion < INIT_PEER_PROTO_VERSION) ||
-                (nBestHeight > CHECKPOINT_FORK_HEIGHT && pfrom->nVersion < CHECKPOINT_PROTO_VERSION))
+                (nBestHeight > CHECKPOINT_FORK_HEIGHT && pfrom->nVersion < CHECKPOINT_PROTO_VERSION) ||
+                (nBestHeight > CHECKPOINT65_FORK_HEIGHT && pfrom->nVersion < CHECKPOINT65_PROTO_VERSION))
 		{
 			// disconnect from peers older than this proto version
 			LogPrintf("partner %s using obsolete version %i; disconnecting\n", pfrom->addr.ToString(), pfrom->nVersion);
