@@ -1,5 +1,5 @@
 
-DVXcoin 1.0.3.0 development tree
+DVXcoin 1.0.5.1 development tree
 
 DVXcoin is a PoS-based cryptocurrency.
 
