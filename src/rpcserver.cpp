@@ -95,12 +95,17 @@ int64_t AmountFromValue(const Value& value)
 
 Value ValueFromAmount(int64_t amount)
 {
-    return (double)amount / (double)FORK_COIN_DIV;
+    LogPrintf("amount: %s\n", amount);
+    if (amount < COIN)
+        return (double)amount / (double)COIN;
+    return (double)amount / (double)COIN / (double)FORK_COIN;
 }
 
 Value ValueFromAmount(uint64_t amount)
 {
-    return (double)amount / (double)FORK_COIN_DIV;
+    if (amount < COIN)
+        return (double)amount / (double)COIN;
+    return (double)amount / (double)COIN / (double)FORK_COIN;
 }
 
 
