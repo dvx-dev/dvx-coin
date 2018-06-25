@@ -143,9 +143,7 @@ bool AcceptToMemoryPool(CTxMemPool& pool, CTransaction &tx, bool fLimitFree,
                         bool* pfMissingInputs);
 
 inline int64_t GetCoinYearReward(int nHeight) {
-    LogPrintf("getcoinrewards", "Block: nHeight=%u\n", nHeight);
     //int lastIdx = CBlockIndex* pindexBest;
-
     int64_t YearPercent = 10;
     int64_t lastDigits = nHeight % 100;
 
@@ -168,8 +166,7 @@ inline int64_t GetCoinYearReward(int nHeight) {
             YearPercent = 1000;
         else
             YearPercent = 100;
-    LogPrintf("getcoinrewards", "Block: nHeight=%u YearPer: %u LastD: %u\n",nHeight, YearPercent, lastDigits);
-    if (nHeight <= 65000)
+    if (nHeight >= 65000)
         return YearPercent * CENT * FORK_COIN;
     return YearPercent * CENT; // per year
 }
